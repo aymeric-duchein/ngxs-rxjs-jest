@@ -1,0 +1,31 @@
+<button mat-button [matMenuTriggerFor]="menu">Sort by
+  <mat-icon>sort</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="sortOptionClick(sortKey.DATE)"> Date
+    <ng-container *ngIf="sortCriteria$ | async as sortCriteria">
+      <mat-icon *ngIf="sortCriteria.by === sortKey.DATE">
+        {{ sortCriteria.direction ? 'arrow_drop_up' : 'arrow_drop_down'}}
+      </mat-icon>
+    </ng-container>
+  </button>
+  <button mat-menu-item (click)="sortOptionClick(sortKey.NAME)"> Name
+    <ng-container *ngIf="sortCriteria$ | async as sortCriteria">
+      <mat-icon *ngIf="sortCriteria.by === sortKey.NAME">
+        {{ sortCriteria.direction ? 'arrow_drop_up' : 'arrow_drop_down'}}
+      </mat-icon>
+    </ng-container>
+
+  </button>
+  <button mat-menu-item (click)="sortOptionClick(sortKey.STATUS)">Status
+    <ng-container *ngIf="(sortCriteria$ | async) as sortCriteria">
+
+      <mat-icon *ngIf="sortCriteria.by === sortKey.STATUS">
+        {{ sortCriteria.direction ? 'arrow_drop_up' : 'arrow_drop_down'}}
+      </mat-icon>
+    </ng-container>
+
+  </button>
+  <button mat-menu-item (click)="sortOptionClick(sortKey.NONE)"> None</button>
+</mat-menu>
+

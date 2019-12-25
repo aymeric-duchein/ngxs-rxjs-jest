@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":4,"metadata":{"mockSelect":{"__symbolic":"select","expression":{"__symbolic":"reference","name":"NgxsJestHelper"},"member":"mockSelect"},"NgxsJestHelper":{"__symbolic":"class","members":{},"statics":{"mockedSelector":[]}}},"origins":{"mockSelect":"./jest-helpers","NgxsJestHelper":"./jest-helpers"},"importAs":"@ngxs-labs/testing/jest"}

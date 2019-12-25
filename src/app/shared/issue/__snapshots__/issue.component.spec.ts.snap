@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IssueComponent should match snapshot 1`] = `
+<mock-render
+  issue={[Function Object]}
+  issueClick={[Function Function]}
+>
+  <app-issue
+    ng-reflect-issue="[object Object]"
+  >
+    <mat-card>
+      <mat-card-header>
+        <div
+          class="overlay"
+        >
+          <mat-icon>
+            edit
+          </mat-icon>
+        </div>
+        <img
+          alt="fakeUrl"
+          mat-card-avatar=""
+          src="fakeUrl"
+        />
+        <mat-card-title>
+          <span
+            class="label"
+            style="background-color: rgb(242, 92, 5);"
+          />
+          <span>
+            name 1
+          </span>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span>
+            Author fake
+          </span>
+          <span
+            class="date"
+          >
+             - 05/01/20
+          </span>
+        </mat-card-subtitle>
+        <div
+          class="status-container"
+        >
+          <div
+            class="status"
+          >
+            <span>
+              To do
+            </span>
+          </div>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div
+          class="description"
+        >
+          Fake description
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </app-issue>
+</mock-render>
+`;

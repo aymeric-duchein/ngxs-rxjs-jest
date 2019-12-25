@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoardComponent should create 1`] = `
+<app-board
+  IssueStatus={[Function Object]}
+  __doneIssues$__selector={[Function Subject]}
+  __inPRIssues$__selector={[Function Subject]}
+  __todoIssues$__selector={[Function Subject]}
+>
+  <div
+    cdkdroplistgroup=""
+    class="board-list-container"
+  >
+    <app-list
+      class="mat-elevation-z2"
+      ng-reflect-issues="[object Object]"
+      ng-reflect-status="To do"
+    />
+    <app-list
+      class="mat-elevation-z2"
+      ng-reflect-issues="[object Object]"
+      ng-reflect-status="In progress"
+    />
+    <app-list
+      class="mat-elevation-z2"
+      ng-reflect-issues="[object Object]"
+      ng-reflect-status="Done"
+    />
+  </div><app-add />
+</app-board>
+`;

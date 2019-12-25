@@ -1,0 +1,3 @@
+<div>
+  <app-issue *ngFor="let issue of  issues$ | async" [issue]="issue" (issueClick)="issueClick($event)"></app-issue>
+</div>

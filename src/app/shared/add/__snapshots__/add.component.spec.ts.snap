@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddComponent should match snapshot 1`] = `
+<app-add
+  store={[Function Store]}
+>
+  <mat-icon
+    class="add-button"
+    ng-reflect-menu="[object Object]"
+  >
+    add_circle
+  </mat-icon><mat-menu>
+    <button
+      mat-menu-item=""
+    >
+      <mat-icon>
+        note_add
+      </mat-icon>
+      <span>
+        Add issue
+      </span>
+    </button>
+    <button
+      mat-menu-item=""
+    >
+      <mat-icon>
+        cached
+      </mat-icon>
+      <span>
+        Add random issue
+      </span>
+    </button>
+  </mat-menu>
+</app-add>
+`;

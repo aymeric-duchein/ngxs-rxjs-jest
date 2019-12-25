@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+app-add {
+  position: absolute;
+  bottom: 1rem;
+  right: 3rem;
+}
+
+.board-list-container {
+  height: calc(100vh - 104px);
+  padding: 20px 10px;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  font-size: 14px;
+  position: relative;
+
+  app-list {
+    min-width: 30vw;
+    max-width: 30vw;
+    height: inherit;
+    background: #fafafa;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+

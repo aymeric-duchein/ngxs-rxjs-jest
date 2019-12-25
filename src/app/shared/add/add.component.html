@@ -1,0 +1,11 @@
+<mat-icon class="add-button" [matMenuTriggerFor]="menu">add_circle</mat-icon>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="addIssue()">
+    <mat-icon>note_add</mat-icon>
+    <span>Add issue</span>
+  </button>
+  <button mat-menu-item (click)="addHttpIssue()">
+    <mat-icon>cached</mat-icon>
+    <span>Add random issue</span>
+  </button>
+</mat-menu>

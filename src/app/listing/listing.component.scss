@@ -1,0 +1,21 @@
+app-add {
+  position: absolute;
+  bottom: 1rem;
+  right: 3rem;
+}
+
+
+.search-container {
+  padding: 2rem 8rem 0.5rem 7rem;
+}
+
+.sort-container {
+  display: flex;
+  padding: 0 8rem;
+  justify-content: flex-end;
+
+  app-sort {
+    margin-right: 5px;
+  }
+}
+

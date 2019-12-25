@@ -1,0 +1,21 @@
+<div class="header">
+  <mat-icon>settings_applications</mat-icon>
+  <span>Settings</span>
+</div>
+<form [formGroup]="formGroup">
+  <div class="image">
+    <mat-form-field>
+      <input formControlName="avatarUrl" matInput placeholder="Avatar">
+    </mat-form-field>
+    <span>Preview: </span>
+    <img [src]="formGroup.get('avatarUrl').value">
+  </div>
+  <div class="notifications">
+    <span>Notifications: </span>
+    <div>
+      <mat-checkbox formControlName="notifications">
+        {{ formGroup.get('notifications').value ? 'Activated' : 'Deactivated' }}
+      </mat-checkbox>
+    </div>
+  </div>
+</form>

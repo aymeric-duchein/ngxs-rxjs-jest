@@ -1,0 +1,8 @@
+<div cdkDropListGroup class="board-list-container">
+  <app-list class="mat-elevation-z2" [issues]="todoIssues$ | async" [status]="IssueStatus.TODO"></app-list>
+  <app-list class="mat-elevation-z2" [issues]="inPRIssues$ | async" [status]="IssueStatus.IN_PROGRESS"></app-list>
+  <app-list class="mat-elevation-z2" [issues]="doneIssues$ | async" [status]="IssueStatus.DONE"></app-list>
+</div>
+
+<app-add></app-add>
+

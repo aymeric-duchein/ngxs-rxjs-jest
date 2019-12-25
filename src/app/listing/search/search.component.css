@@ -1,0 +1,4 @@
+mat-form-field {
+  margin-left: 1em;
+  width: calc(100% - 2em);
+}

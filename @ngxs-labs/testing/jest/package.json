@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/ngxs-labs-testing-jest.umd.js",
+  "module": "../fesm5/ngxs-labs-testing-jest.js",
+  "es2015": "../fesm2015/ngxs-labs-testing-jest.js",
+  "esm5": "../esm5/jest/ngxs-labs-testing-jest.js",
+  "esm2015": "../esm2015/jest/ngxs-labs-testing-jest.js",
+  "fesm5": "../fesm5/ngxs-labs-testing-jest.js",
+  "fesm2015": "../fesm2015/ngxs-labs-testing-jest.js",
+  "typings": "ngxs-labs-testing-jest.d.ts",
+  "metadata": "ngxs-labs-testing-jest.metadata.json",
+  "sideEffects": false,
+  "name": "@ngxs-labs/testing/jest"
+}

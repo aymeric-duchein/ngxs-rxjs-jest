@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingComponent should create 1`] = `
+<app-listing>
+  <div
+    class="search-container"
+  >
+    <app-search />
+  </div><div
+    class="sort-container"
+  >
+    <app-sort />
+  </div><app-table /><app-add />
+</app-listing>
+`;

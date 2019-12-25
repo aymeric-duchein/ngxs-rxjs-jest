@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableComponent should display issues 1`] = `
+<app-table
+  __issues$__selector={[Function Subject]}
+  store={[Function Store]}
+>
+  <div>
+    
+    <app-issue
+      ng-reflect-issue="[object Object]"
+    />
+    <app-issue
+      ng-reflect-issue="[object Object]"
+    />
+    <app-issue
+      ng-reflect-issue="[object Object]"
+    />
+  </div>
+</app-table>
+`;

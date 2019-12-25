@@ -1,0 +1,36 @@
+{
+  "name": "@ngxs-labs/testing",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngxs-labs/testing.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ngxs-labs/testing#readme",
+  "bugs": {
+    "url": "https://github.com/ngxs-labs/testing/issues"
+  },
+  "keywords": [
+    "ngxs",
+    "redux",
+    "store"
+  ],
+  "sideEffects": true,
+  "peerDependencies": {
+    "@angular/core": "^8.2.14",
+    "@ngxs/store": ">=3.6.0",
+    "rxjs": ">=6.5.4"
+  },
+  "main": "bundles/ngxs-labs-testing.umd.js",
+  "module": "fesm5/ngxs-labs-testing.js",
+  "es2015": "fesm2015/ngxs-labs-testing.js",
+  "esm5": "esm5/ngxs-labs-testing.js",
+  "esm2015": "esm2015/ngxs-labs-testing.js",
+  "fesm5": "fesm5/ngxs-labs-testing.js",
+  "fesm2015": "fesm2015/ngxs-labs-testing.js",
+  "typings": "ngxs-labs-testing.d.ts",
+  "metadata": "ngxs-labs-testing.metadata.json",
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

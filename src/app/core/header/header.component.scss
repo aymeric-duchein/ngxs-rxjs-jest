@@ -1,0 +1,17 @@
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.header-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    padding-left: 1rem;
+  }
+}
+
+:host {
+  width: 100vw;
+}

@@ -1,0 +1,95 @@
+@import "src/styles";
+
+mat-card {
+  margin: 0.7rem 0.4rem;
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    background-color: rgba(230, 227, 227, 0.9);
+    top: 16px;
+    left: 16px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    opacity: 0;
+
+    mat-icon {
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+      color: #a5a2a2;
+      opacity: 0;
+    }
+  }
+
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+
+    .label {
+      background-color: #b3bac5;
+      border-radius: 4px;
+      width: 2rem;
+      margin-right: 0.5rem;
+      display: block;
+      height: 8px;
+    }
+  }
+
+  mat-card-subtitle {
+    font-size: 10px;
+
+    .date {
+      color: #c9c0c0;
+    }
+  }
+
+  .status-container {
+    position: absolute;
+    top: 17px;
+    right: 1rem;
+
+    .status {
+      font-size: 10px;
+      background-color: rgba(#0A6ABF, 0.2);
+      color: #0A6ABF;
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 16px;
+      align-items: center;
+      height: 10px;
+    }
+  }
+
+  mat-card-content {
+    .description {
+      font-size: 11px;
+      height: 1rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+mat-card:hover {
+  background-color: #f4f5f7;
+
+  .overlay {
+    opacity: 1;
+    transition: opacity .4s ease-in-out;
+
+    mat-icon {
+      opacity: 1;
+      transition: opacity .3s ease-in-out;
+    }
+  }
+}
+
+
+
