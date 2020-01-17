@@ -5,17 +5,14 @@ import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MockModule} from 'ng-mocks';
 import {NgxsModule, Store} from '@ngxs/store';
-import {Subject} from 'rxjs';
-import {UserState} from '@src/app/core/user/user.state';
 import {By} from '@angular/platform-browser';
-import {mockSelect} from '@ngxs-labs/testing/jest';
 import {SignInButtonClick} from '@src/app/login/login.action';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let store: Store;
-  let getError$: Subject<string>;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
@@ -30,7 +27,6 @@ describe('LoginComponent', () => {
       ]
     });
 
-    getError$ = mockSelect(UserState.getError);
     store = TestBed.get(Store);
     jest.spyOn(store, 'dispatch');
     fixture = TestBed.createComponent(LoginComponent);
@@ -42,13 +38,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  test('should display error', () => {
-    getError$.next('Invalid user');
-    fixture.detectChanges();
-
-    const errorP = fixture.debugElement.query(By.css('p'));
-    expect(errorP.nativeElement.innerHTML).toContain('Invalid user');
-  });
+  test.todo('should display error');
 
   test('should dispatch login action', () => {
     const loginInput = fixture.debugElement.query(By.css(`form>div:nth-of-type(1)>mat-form-field>input`));
