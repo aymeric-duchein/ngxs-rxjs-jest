@@ -1,7 +1,7 @@
 import {Action, createSelector, Selector, State, StateContext} from '@ngxs/store';
 import {Issue, IssueSortCriteria, IssueStateModel, IssueStatus, SortDirection} from './issue.model';
 import {BoardIssueClick, BoardIssueDropped} from '../../board/board.actions';
-import {ListingIssueClick, SearchFormUpdated, SortOptionClick} from '../../listing/listing.actions';
+import {ListingIssueClick, SearchFormUpdated} from '../../listing/listing.actions';
 import {SnackbarUndoIssueUpdate} from '../snackbar/snackbar.actions';
 import {AddHttpIssueBtnClick, AddIssueBtnClick} from '../header/header.action';
 import {IssueUpsertClosed} from '../modal/modal.action';
@@ -30,28 +30,13 @@ export class IssueState {
   }
 
   @Selector()
-  static getSortCriteria(state: IssueStateModel): IssueSortCriteria {
-    return state.sort;
-  }
-
-  @Selector()
   static getFilter(state: IssueStateModel): string {
     return state.search;
-  }
-
-  @Selector([IssueState.getIssues, IssueState.getSortCriteria])
-  static getSortedIssues(_, issues: Issue[], criteria: IssueSortCriteria): Issue[] {
-    return issues.sort(by(criteria));
   }
 
   @Selector([IssueState.getIssues, IssueState.getFilter])
   static getFilteredIssues(_, issues: Issue[],  search: string): Issue[] {
     return issues.filter(filterBy(search));
-  }
-
-  @Selector([IssueState.getSortedIssues, IssueState.getFilter])
-  static getFilteredAndSortedIssues(_, sortedIssues: Issue[], search: string): Issue[] {
-    return sortedIssues.filter(filterBy(search));
   }
 
   static getIssuesByStatus(status: IssueStatus) {
@@ -93,16 +78,6 @@ export class IssueState {
   @Action(SearchFormUpdated)
   searchUpdated({patchState}: StateContext<IssueStateModel>, {search}: SearchFormUpdated) {
     patchState({search});
-  }
-
-  @Action(SortOptionClick)
-  setSortOption({patchState, getState}: StateContext<IssueStateModel>, {sortKey}: SortOptionClick) {
-    const {sort} = getState();
-    if (sort && sort.by === sortKey) {
-      patchState({sort: {by: sortKey, direction: sort.direction === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC }});
-    } else {
-      patchState({sort: {by: sortKey, direction: SortDirection.ASC}});
-    }
   }
 
   @Action(IssueUpsertClosed)

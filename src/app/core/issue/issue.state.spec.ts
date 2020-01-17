@@ -3,7 +3,7 @@ import {NgxsTestBed, NgxsTesting} from '@ngxs-labs/testing';
 import {BoardIssueClick, BoardIssueDropped} from '@src/app/board/board.actions';
 import {MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_ISSUE_PAYLOAD, MOCK_TODO_ISSUE} from '@mocks/issue.mock';
 import {HttpIssueSuccess, OpenIssueModal} from '@src/app/core/issue/issue.actions';
-import {ListingIssueClick, SearchFormUpdated, SortOptionClick} from '@src/app/listing/listing.actions';
+import {ListingIssueClick, SearchFormUpdated} from '@src/app/listing/listing.actions';
 import {AddHttpIssueBtnClick, AddIssueBtnClick} from '@src/app/core/header/header.action';
 import {MOCK_HTTP_CLIENT, MOCK_HTTP_CLIENT_PROVIDER} from '@mocks/provider.mock';
 import {IssueStatus, SortDirection, SortKey} from '@src/app/core/issue/issue.model';
@@ -68,28 +68,13 @@ describe('Issue state', () => {
     expect(issueStateContext.patchState).toHaveBeenCalledWith({search: 'new search'});
   });
 
-  test('should update sort key without existing', () => {
-    dispatch(new SortOptionClick(SortKey.NONE));
-    expect(issueStateContext.patchState).toHaveBeenCalledWith({sort: {by: SortKey.NONE, direction: SortDirection.ASC}});
-  });
+  test.todo('should update sort key without existing');
 
-  test('should update sort key with different by', () => {
-    issueStateContext.getState.mockReturnValue({sort: {by: SortKey.DATE, direction: SortDirection.ASC}});
-    dispatch(new SortOptionClick(SortKey.NAME));
-    expect(issueStateContext.patchState).toHaveBeenCalledWith({sort: {by: SortKey.NAME, direction: SortDirection.ASC}});
-  });
+  test.todo('should update sort key with different by');
 
-  test('should update sort key with same ASC', () => {
-    issueStateContext.getState.mockReturnValue({sort: {by: SortKey.STATUS, direction: SortDirection.ASC}});
-    dispatch(new SortOptionClick(SortKey.STATUS));
-    expect(issueStateContext.patchState).toHaveBeenCalledWith({sort: {by: SortKey.STATUS, direction: SortDirection.DESC}});
-  });
+  test.todo('should update sort key with same ASC');
 
-  test('should update sort key with same DESC', () => {
-    issueStateContext.getState.mockReturnValue({sort: {by: SortKey.STATUS, direction: SortDirection.DESC}});
-    dispatch(new SortOptionClick(SortKey.STATUS));
-    expect(issueStateContext.patchState).toHaveBeenCalledWith({sort: {by: SortKey.STATUS, direction: SortDirection.ASC}});
-  });
+  test.todo('should update sort key with same DESC');
 
   test('should update issue', () => {
     issueStateContext.getState.mockReturnValue({issues: [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE]});
@@ -136,87 +121,30 @@ describe('Issue state', () => {
     .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
   });
 
-  test('should return sort criteria', () => {
-    expect(IssueState.getSortCriteria({issues: [], sort: {by: SortKey.STATUS, direction: SortDirection.DESC}}))
-    .toEqual({by: SortKey.STATUS, direction: SortDirection.DESC});
-  });
+  test.todo('should return sort criteria');
 
-  test('should return sort criteria', () => {
+  test('should return search criteria', () => {
     expect(IssueState.getFilter({issues: [], search: 'search'}))
     .toEqual('search');
   });
 
-  test('should return sorted issues by STATUS ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.STATUS, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_TODO_ISSUE]);
-  });
+  test.todo('should return sorted issues by STATUS ASC');
 
-  test('should return sorted issues by STATUS DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_IN_PROGRESS_ISSUE, MOCK_TODO_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.STATUS, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by STATUS DESC');
 
-  test('should return sorted issues by NAME ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NAME, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE, MOCK_TODO_ISSUE]);
-  });
+  test.todo('should return sorted issues by NAME ASC');
 
-  test('should return sorted issues by NAME DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NAME, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
-  });
+  test.todo('should return sorted issues by NAME DESC');
 
-  test('should return sorted issues by DATE ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.DATE, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_IN_PROGRESS_ISSUE, MOCK_TODO_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by DATE ASC');
 
-  test('should return sorted issues by DATE DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.DATE, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_DONE_ISSUE, MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
-  });
+  test.todo('should return sorted issues by DATE DESC');
 
-  test('should return sorted issues by NONE ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NONE, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by NONE ASC');
 
-  test('should return sorted issues by NONE DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NONE, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by NONE DESC');
 
-  test('should return sorted issues by nothing', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      undefined
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by nothing');
 
   test('should return filtered issues', () => {
     expect(IssueState.getFilteredIssues({},
@@ -226,21 +154,9 @@ describe('Issue state', () => {
     .toEqual([MOCK_DONE_ISSUE]);
   });
 
-  test('should return filtered and sorted issues', () => {
-    expect(IssueState.getFilteredAndSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      'done'
-    ))
-    .toEqual([MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return filtered and sorted issues');
 
-  test('should return filtered and sorted issues', () => {
-    expect(IssueState.getFilteredAndSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      undefined
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return filtered and sorted issues');
 
   test('should return TODO issues', () => {
     expect(IssueState.getIssuesByStatus(IssueStatus.TODO)({issues: [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]}))
@@ -354,29 +270,13 @@ describe('Issue state without ngxs-labs', () => {
     expect(store.selectSnapshot(IssueState.getFilter)).toEqual('new search');
   });
 
-  test('should update sort key without existing', () => {
-    store.reset({issue: {issues: []}});
-    store.dispatch(new SortOptionClick(SortKey.NONE));
-    expect(store.selectSnapshot(IssueState.getSortCriteria)).toEqual({by: SortKey.NONE, direction: SortDirection.ASC});
-  });
+  test.todo('should update sort key without existing');
 
-  test('should update sort key with different by', () => {
-    store.reset({issue: {issues: [], sort: {by: SortKey.DATE, direction: SortDirection.ASC}}});
-    store.dispatch(new SortOptionClick(SortKey.NAME));
-    expect(store.selectSnapshot(IssueState.getSortCriteria)).toEqual({by: SortKey.NAME, direction: SortDirection.ASC});
-  });
+  test.todo('should update sort key with different by');
 
-  test('should update sort key with same ASC', () => {
-    store.reset({issue: {issues: [], sort: {by: SortKey.STATUS, direction: SortDirection.ASC}}});
-    store.dispatch(new SortOptionClick(SortKey.STATUS));
-    expect(store.selectSnapshot(IssueState.getSortCriteria)).toEqual({by: SortKey.STATUS, direction: SortDirection.DESC});
-  });
+  test.todo('should update sort key with same ASC');
 
-  test('should update sort key with same DESC', () => {
-    store.reset({issue: {issues: [], sort: {by: SortKey.STATUS, direction: SortDirection.DESC}}});
-    store.dispatch(new SortOptionClick(SortKey.STATUS));
-    expect(store.selectSnapshot(IssueState.getSortCriteria)).toEqual({by: SortKey.STATUS, direction: SortDirection.ASC});
-  });
+  test.todo('should update sort key with same DESC');
 
   test('should update issue', () => {
     store.reset({issue: {issues: [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE]}});
@@ -413,87 +313,30 @@ describe('Issue state without ngxs-labs', () => {
     .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
   });
 
-  test('should return sort criteria', () => {
-    expect(IssueState.getSortCriteria({issues: [], sort: {by: SortKey.STATUS, direction: SortDirection.DESC}}))
-    .toEqual({by: SortKey.STATUS, direction: SortDirection.DESC});
-  });
+  test.todo('should return sort criteria');
 
-  test('should return sort criteria', () => {
+  test('should return search criteria', () => {
     expect(IssueState.getFilter({issues: [], search: 'search'}))
     .toEqual('search');
   });
 
-  test('should return sorted issues by STATUS ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.STATUS, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_TODO_ISSUE]);
-  });
+  test.todo('should return sorted issues by STATUS ASC');
 
-  test('should return sorted issues by STATUS DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_IN_PROGRESS_ISSUE, MOCK_TODO_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.STATUS, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by STATUS DESC');
 
-  test('should return sorted issues by NAME ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NAME, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE, MOCK_TODO_ISSUE]);
-  });
+  test.todo('should return sorted issues by NAME ASC');
 
-  test('should return sorted issues by NAME DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NAME, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
-  });
+  test.todo('should return sorted issues by NAME DESC');
 
-  test('should return sorted issues by DATE ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.DATE, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_IN_PROGRESS_ISSUE, MOCK_TODO_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by DATE ASC');
 
-  test('should return sorted issues by DATE DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.DATE, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_DONE_ISSUE, MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
-  });
+  test.todo('should return sorted issues by DATE DESC');
 
-  test('should return sorted issues by NONE ASC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NONE, direction: SortDirection.ASC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by NONE ASC');
 
-  test('should return sorted issues by NONE DESC', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      {by: SortKey.NONE, direction: SortDirection.DESC}
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by NONE DESC');
 
-  test('should return sorted issues by nothing', () => {
-    expect(IssueState.getSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      undefined
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return sorted issues by nothing');
 
   test('should return filtered issues', () => {
     expect(IssueState.getFilteredIssues({},
@@ -503,21 +346,9 @@ describe('Issue state without ngxs-labs', () => {
     .toEqual([MOCK_DONE_ISSUE]);
   });
 
-  test('should return filtered and sorted issues', () => {
-    expect(IssueState.getFilteredAndSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      'done'
-    ))
-    .toEqual([MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return filtered and sorted issues');
 
-  test('should return filtered and sorted issues', () => {
-    expect(IssueState.getFilteredAndSortedIssues({},
-      [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE],
-      undefined
-    ))
-    .toEqual([MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]);
-  });
+  test.todo('should return filtered and sorted issues');
 
   test('should return TODO issues', () => {
     expect(IssueState.getIssuesByStatus(IssueStatus.TODO)({issues: [MOCK_TODO_ISSUE, MOCK_IN_PROGRESS_ISSUE, MOCK_DONE_ISSUE]}))

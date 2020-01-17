@@ -17,7 +17,7 @@ describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
   let store: Store;
-  let getFilteredAndSortedIssues$: Subject<Issue[]>;
+  let getFilteredIssues$: Subject<Issue[]>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TableComponent, MockComponent(IssueComponent)],
@@ -32,7 +32,7 @@ describe('TableComponent', () => {
     store = TestBed.get(Store);
     jest.spyOn(store, 'dispatch');
 
-    getFilteredAndSortedIssues$ = mockSelect(IssueState.getFilteredAndSortedIssues as any);
+    getFilteredIssues$ = mockSelect(IssueState.getFilteredIssues as any);
     fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -44,7 +44,7 @@ describe('TableComponent', () => {
   });
 
   test('should display issues', () => {
-    getFilteredAndSortedIssues$.next([MOCK_TODO_ISSUE, MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
+    getFilteredIssues$.next([MOCK_TODO_ISSUE, MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
     fixture.detectChanges();
     const issues = fixture.debugElement.queryAll(By.css('app-issue'));
     expect(issues.length).toEqual(3);
@@ -52,7 +52,7 @@ describe('TableComponent', () => {
   });
 
   test('should dispatch click action on click', () => {
-    getFilteredAndSortedIssues$.next([MOCK_TODO_ISSUE, MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
+    getFilteredIssues$.next([MOCK_TODO_ISSUE, MOCK_DONE_ISSUE, MOCK_IN_PROGRESS_ISSUE]);
     fixture.detectChanges();
     const issue = fixture.debugElement.query(By.css('app-issue'));
     issue.triggerEventHandler('issueClick', MOCK_TODO_ISSUE);

@@ -13,10 +13,3 @@ export class SearchFormUpdated {
   constructor(public search: string) {
   }
 }
-
-export class SortOptionClick {
-  static readonly type = '[LISTING] Sort option click';
-
-  constructor(public sortKey: SortKey) {
-  }
-}

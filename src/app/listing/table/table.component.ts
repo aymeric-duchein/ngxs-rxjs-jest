@@ -12,7 +12,7 @@ import {ListingIssueClick} from '../listing.actions';
 })
 export class TableComponent {
 
-  @Select(IssueState.getFilteredAndSortedIssues) issues$: Observable<Issue[]>;
+  @Select(IssueState.getFilteredIssues) issues$: Observable<Issue[]>;
 
   constructor(private readonly store: Store) {
   }
