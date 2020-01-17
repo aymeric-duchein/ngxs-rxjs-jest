@@ -1,7 +1,3 @@
-export class SignOutButtonClick {
-  static readonly type = '[HEADER] Sign out button click';
-}
-
 export class AddIssueBtnClick {
   static readonly type = '[HEADER] Add issue button click';
 }

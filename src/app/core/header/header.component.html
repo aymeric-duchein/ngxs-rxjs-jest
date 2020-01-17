@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <span>Issue board</span>
-  <ng-container *ngIf="isAuthenticated$ | async">
+  <ng-container>
     <div class="header-buttons">
       <div>
         <a mat-button [routerLink]="routesNames.BOARD">
@@ -12,7 +12,6 @@
       </div>
       <div>
         <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">
-          {{ userName$ | async }}
           <mat-icon>account_circle</mat-icon></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="routesNames.SETTINGS">

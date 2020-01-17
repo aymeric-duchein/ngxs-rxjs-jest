@@ -2,13 +2,10 @@ import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {User} from './user.model';
 import {Router} from '@angular/router';
 import {LoginService} from '../../login/login.service';
-import {catchError, switchMap} from 'rxjs/operators';
-import {DisplayNotification, SignInError, SignInSuccess} from './user.actions';
-import {Navigate, RouterNavigation} from '@ngxs/router-plugin';
+import {DisplayNotification} from './user.actions';
+import {RouterNavigation} from '@ngxs/router-plugin';
 import {UserSettingsUpdate} from '../../settings/settings.actions';
 import {RoutesNames} from '../../app-routing.const';
-import {SignOutButtonClick} from '../header/header.action';
-import {SignInButtonClick} from '../../login/login.action';
 import {BoardIssueDropped} from '../../board/board.actions';
 
 export interface UserStateModel {
@@ -56,31 +53,6 @@ export class UserState {
   @Selector([UserState.getUser])
   static getNotifications(_, user: User): boolean {
     return user.notifications;
-  }
-
-  @Action(SignOutButtonClick)
-  signOut({setState, dispatch}: StateContext<UserStateModel>) {
-    setState({});
-    return dispatch(new Navigate([RoutesNames.LOGIN]));
-  }
-
-  @Action(SignInButtonClick)
-  signIn({dispatch}: StateContext<UserStateModel>, {username, password}: SignInButtonClick) {
-    return this.loginService.signIn(username, password).pipe(
-      switchMap(user => dispatch(new SignInSuccess(user))),
-      catchError(() => dispatch(new SignInError()))
-    );
-  }
-
-  @Action(SignInSuccess)
-  signInSuccess({setState, dispatch}: StateContext<UserStateModel>, {user}: SignInSuccess) {
-    setState({user});
-    return dispatch(new Navigate([RoutesNames.BOARD]));
-  }
-
-  @Action(SignInError)
-  signInError({patchState}: StateContext<UserStateModel>) {
-    patchState({error: 'Invalid username/password'});
   }
 
   @Action(UserSettingsUpdate)
